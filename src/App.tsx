@@ -1,7 +1,28 @@
+import { useState } from 'react';
+
 const messages = ['Learn React ⚛️', 'Apply for jobs 💼', 'Invest your new income 🤑'];
 
 function App() {
-  const step = 1;
+  const [step, setStep] = useState<number>(1);
+  const [hide, setHide] = useState<string>('Hide');
+
+  const prevHandler = () => {
+    setStep((prevStep) => Math.max(prevStep - 1, 0));
+  };
+
+  const nextHandler = () => {
+    setStep((prevStep) => Math.min(prevStep + 1, messages.length));
+  };
+
+  const hideHandler = () => {
+    if (hide === 'Hide') {
+      setHide('Show');
+      setStep(0);
+    } else {
+      setHide('Hide');
+      setStep(1);
+    }
+  };
 
   return (
     <div className="steps">
@@ -13,13 +34,26 @@ function App() {
         ))}
       </div>
 
-      <div className="message">
-        Step {step}: {messages[step - 1]}
-      </div>
+      <div className="message">{step > 0 && <p>{messages[step - 1]}</p>}</div>
 
       <div className="buttons">
-        <button type="button">Previous</button>
-        <button type="button">Next</button>
+        <button
+          type="button"
+          onClick={prevHandler}
+          className={step < 1 || hide === 'show' ? 'hide-btn' : ''}
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          onClick={nextHandler}
+          className={step >= 3 || hide === 'show' ? 'hide-btn' : ''}
+        >
+          Next
+        </button>
+        <button type="button" onClick={hideHandler}>
+          {hide}
+        </button>
       </div>
     </div>
   );
