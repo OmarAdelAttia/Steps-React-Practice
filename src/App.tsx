@@ -41,14 +41,18 @@ function App() {
         <button
           type="button"
           onClick={prevHandler}
-          className={step < 1 || hide === 'show' ? 'hide-btn' : ''}
+          disabled={step < 1 || hide === 'show'}
+          className={step < 1 || hide === 'show' ? 'disabled-btn' : ''}
+          // className={step < 1 || hide === 'show' ? 'hide-btn' : ''} // in case we want to hide the button
         >
           Previous
         </button>
         <button
           type="button"
           onClick={nextHandler}
-          className={step >= 3 || hide === 'show' ? 'hide-btn' : ''}
+          disabled={step >= 3 || hide === 'show'}
+          className={step >= 3 || hide === 'show' ? 'disabled-btn' : ''}
+          // className={step >= 3 || hide === 'show' ? 'hide-btn' : ''} // in case we want to hide the button
         >
           Next
         </button>

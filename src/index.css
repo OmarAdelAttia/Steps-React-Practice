@@ -95,3 +95,8 @@ h3 {
 .hide-btn {
   display: none !important;
 }
+
+.disabled-btn {
+  background-color: #ccc !important;
+  cursor: not-allowed !important;
+}
