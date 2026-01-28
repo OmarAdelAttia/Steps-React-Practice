@@ -1,0 +1,14 @@
+.close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 40px;
+  color: inherit;
+
+  &:hover {
+    color: #7950f2;
+  }
+}
