@@ -8,6 +8,7 @@ function App() {
 
   const prevHandler = () => {
     setStep((prevStep) => Math.max(prevStep - 1, 0));
+    if (step - 1 === 0) setHide('Show');
   };
 
   const nextHandler = () => {
@@ -34,7 +35,7 @@ function App() {
         ))}
       </div>
 
-      <div className="message">{step > 0 && <p>{messages[step - 1]}</p>}</div>
+      <div className="message">{step > 0 ? messages[step - 1] : `Let's Rock it!`}</div>
 
       <div className="buttons">
         <button
