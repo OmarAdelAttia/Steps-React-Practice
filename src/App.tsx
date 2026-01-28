@@ -15,7 +15,7 @@ function App() {
   };
 
   const openCloseHandler = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((currState) => !currState);
   };
 
   return (
