@@ -79,13 +79,9 @@
   .buttons {
     @include flex(space-between);
 
-    .hide-btn {
-      display: none !important;
-    }
-
     .disabled-btn {
-      background-color: #ccc !important;
-      cursor: not-allowed !important;
+      background-color: #ccc;
+      cursor: not-allowed;
     }
   }
 

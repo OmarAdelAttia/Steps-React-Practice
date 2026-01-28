@@ -4,26 +4,14 @@ const messages = ['Learn React ⚛️', 'Apply for jobs 💼', 'Invest your new 
 
 function App() {
   const [step, setStep] = useState<number>(1);
-  const [hide, setHide] = useState<string>('Hide');
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
   const prevHandler = () => {
-    setStep((prevStep) => Math.max(prevStep - 1, 0));
-    if (step - 1 === 0) setHide('Show');
+    setStep((prevStep) => Math.max(prevStep - 1, 1));
   };
 
   const nextHandler = () => {
     setStep((prevStep) => Math.min(prevStep + 1, messages.length));
-  };
-
-  const hideHandler = () => {
-    if (hide === 'Hide') {
-      setHide('Show');
-      setStep(0);
-    } else {
-      setHide('Hide');
-      setStep(1);
-    }
   };
 
   const openCloseHandler = () => {
@@ -48,29 +36,24 @@ function App() {
               ))}
             </div>
 
-            <div className="message">{step > 0 ? messages[step - 1] : `Let's Rock it!`}</div>
+            <div className="message">{messages[step - 1]}</div>
 
             <div className="buttons">
               <button
                 type="button"
                 onClick={prevHandler}
-                disabled={step < 1 || hide === 'show'}
-                className={step < 1 || hide === 'show' ? 'disabled-btn' : ''}
-                // className={step < 1 || hide === 'show' ? 'hide-btn' : ''} // in case we want to hide the button
+                disabled={step < 1}
+                className={step <= 1 ? 'disabled-btn' : ''}
               >
                 Previous
               </button>
               <button
                 type="button"
                 onClick={nextHandler}
-                disabled={step >= 3 || hide === 'show'}
-                className={step >= 3 || hide === 'show' ? 'disabled-btn' : ''}
-                // className={step >= 3 || hide === 'show' ? 'hide-btn' : ''} // in case we want to hide the button
+                disabled={step >= 3}
+                className={step >= 3 ? 'disabled-btn' : ''}
               >
                 Next
-              </button>
-              <button type="button" onClick={hideHandler}>
-                {hide}
               </button>
             </div>
           </>
