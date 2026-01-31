@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button } from './components/Button';
 
 const messages = ['Learn React ⚛️', 'Apply for jobs 💼', 'Invest your new income 🤑'];
 
@@ -39,30 +40,18 @@ function App() {
             <div className="message">{messages[step - 1]}</div>
 
             <div className="buttons">
-              <button
-                type="button"
-                onClick={prevHandler}
-                disabled={step < 1}
-                className={step <= 1 ? 'disabled-btn' : ''}
-              >
-                Previous
-              </button>
-              <button
-                type="button"
-                onClick={nextHandler}
-                disabled={step >= 3}
-                className={step >= 3 ? 'disabled-btn' : ''}
-              >
-                Next
-              </button>
+              <Button onClick={prevHandler} step={step} direction="previous">
+                <span>◀️</span> Previous
+              </Button>
+              <Button onClick={nextHandler} step={step} direction="next">
+                Next <span>▶️</span>
+              </Button>
             </div>
           </>
         )}
         {!isOpen && (
           <div className="btn">
-            <button className="button" type="button" onClick={openCloseHandler}>
-              Open
-            </button>
+            <Button onClick={openCloseHandler}>Open</Button>
           </div>
         )}
       </div>
